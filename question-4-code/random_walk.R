@@ -4,7 +4,11 @@
 library(ggplot2)
 library(gridExtra)
 
-random_walk  <- function (n_steps) {
+# adding "seed_value" allows for the data produced by the function to be reproducible each time this is specified 
+random_walk  <- function (n_steps, seed_value) { 
+  
+  # Set the seed for reproducibility
+  set.seed(seed_value)  
   
   df <- data.frame(x = rep(NA, n_steps), y = rep(NA, n_steps), time = 1:n_steps)
   
@@ -28,7 +32,9 @@ random_walk  <- function (n_steps) {
   
 }
 
-data1 <- random_walk(500)
+# The seed_value "123" allows to produce same data each time this is run
+# Do not change this seed value to ensure reproducibility
+data1 <- random_walk(500, 123) 
 
 plot1 <- ggplot(aes(x = x, y = y), data = data1) +
   
@@ -40,7 +46,10 @@ plot1 <- ggplot(aes(x = x, y = y), data = data1) +
   
   ylab("y-coordinate")
 
-data2 <- random_walk(500)
+
+# The seed_value "789" allows to produce same data each time this is run
+# Do not change this seed value to ensure reproducibility
+data2 <- random_walk(500, 789)
 
 plot2 <- ggplot(aes(x = x, y = y), data = data2) +
   
