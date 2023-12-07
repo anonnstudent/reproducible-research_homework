@@ -8,11 +8,17 @@
 
 **4.1** - *A script for simulating a random_walk is provided in the `question-4-code` folder of this repo. Execute the code to produce the paths of two random walks. What do you observe? (10 points)*
 
-The two graphs have different axis and the plots within span almost the entire graph. Plot1 (left) axis are x = -7.5 to 0.5 and y = -6 to 1, and Plot2 (right) axis are x = -3.5 to 3.5 and y = -1.5 to 3.5. Due to this it can be concluded that these two random walks span different areas relative to each other as they span different areas. Both walks finish at the same point (0,0) but Plot1 finishes further from this point (-5.25,-2) in comparison to Plot2 (-1.95,0.1). From this it can also be seen that both these plots finish on the left from their original starting point. However, Plot1 mainly stays within the (-ve,-ve) areas of the plot apart from a small number of time points within the first 100t. Plot2 is centered around (0,0) more in comparison but spends most of the walk around (x, +ve).The walk in Plot1 appears to be more spread out as there are are less overlapping routes that circle over itself in comparison to Plot2. However, both plots have multiple time points where the walk stays within the area such as those centered around (-6.2,-2.5) for Plot1 and (-1.5, 2.25) for Plot2.
+The two graphs have different axes and the plots span almost the entire graph. Plot1 (left) axis are x = -7.5 to 0.5 and y = -6 to 1, and Plot2 (right) axis are x = -3.5 to 3.5 and y = -1.5 to 3.5. Due to this, it can be concluded that these two random walks span different areas relative to each other as they span different areas. Both walks finish at the same point (0,0) but Plot1 finishes further from this point (-5.25,-2) in comparison to Plot2 (-1.95,0.1). From this, it can also be seen that both these plots finish on the left from their original starting point. However, Plot1 mainly stays within the (-ve,-ve) areas of the plot apart from a small number of time points within the first 100t. Plot2 is centred around (0,0) more in comparison but spends most of the walk around (x, +ve). The walk-in Plot1 appears to be more spread out as there are fewer overlapping routes that circle over itself in comparison to Plot2. However, both plots have multiple time points where the walk stays within the area such as those centred around (-6.2,-2.5) for Plot1 and (-1.5, 2.25) for Plot2.
+
+Below are the plots discussed. 
+
+<img width="988" alt="Screenshot 2023-12-07 at 09 38 27" src="https://github.com/anonnstudent/reproducible-research_homework/assets/150166627/4dd0eaf0-6f17-431a-8238-f48b97020ae7">
+
+
 
 **4.2** - *Investigate the term **random seeds**. What is a random seed and how does it work? (5 points)*
 
-A random seed is used to make generating random numbers reproducible. In R, it is an integer vector that stores the state of the random number generator (RNG). RNGs cannot be truly random as they use deterministic algorithms to produce numbers that appear statistically random. Setting a random seed allows to run a RNG that uses the same algorithm each time the code is run, meaning the same random numbers are always produced. If a random seed is not used then the output each time the code for the RNG will be different, making it impossible for anyone to replicate your results. In R, the function set.seed( ) is used to specify random seed used for RNGs within the code it is run for. This allows the same numbers to always be produced by this code making it reproducible.
+A random seed is used to make generating random numbers reproducible. In R, it is an integer vector that stores the state of the random number generator (RNG). RNGs cannot be truly random as they use deterministic algorithms to produce numbers that appear statistically random. Setting a random seed allows us to run an RNG that uses the same algorithm each time the code is run, meaning the same random numbers are always produced. If a random seed is not used then the output each time the code for the RNG will be different, making it impossible for anyone to replicate your results. In R, the function set.seed( ) is used to specify random seed used for RNGs within the code it is run for. This allows the same numbers to always be produced by this code making it reproducible.
 
 **4.3** - *Edit the script to make a reproducible simulation of Brownian motion. Commit the file and push it to your forked `reproducible-research_homework` repo. (10 points)*
 
@@ -20,9 +26,12 @@ See folder `question-4-code` for script.
 
 **4.4** - *Go to your commit history and click on the latest commit. Show the edit you made to the code in the comparison view.*
 
+<img width="1392" alt="Screenshot 2023-12-07 at 14 21 32" src="https://github.com/anonnstudent/reproducible-research_homework/assets/150166627/ecdf84a3-286d-4117-931a-13a8b149e7fd">
+
+
 ### Question 5
 
-Code below also in script in folder `question-5-answers`
+Code below is also in a script in folder `question-5-answers`
 
 **5.1** - *Import the data for double-stranded DNA (dsDNA) viruses taken from the Supplementary Materials of the original paper into Posit Cloud (the csv file is in the `question-5-data` folder). How many rows and columns does the table have? (3 points)*
 
@@ -41,9 +50,9 @@ View(dsdna_virus_data)
 
 **5.2** - *What transformation can you use to fit a linear model to the data? Apply the transformation. (3 points)*
 
-As the equation V = $\beta$L\^($\alpha$) is allometric (nonlinear) this data can be log-transformed to make linear. To ensure this transformation would be appropriate for the data I also visualised the data for both virion volume and genome length.
+As the equation V = $\beta$L\^($\alpha$) is allometric (nonlinear) this data can be log-transformed to make it linear. To ensure this transformation would be appropriate for the data I also visualised the data for both virion volume and genome length.
 
-The log-transformation can be seen in the code, where columns showing logged values are added to the data. Now a linear model can be fitted to the data: ln(V) = ln($\beta$) + a\*ln(L).
+The log transformation can be seen in the code, where columns showing logged values are added to the data. Now a linear model can be fitted to the data: ln(V) = ln($\beta$) + a\*ln(L).
 
 ```{r}
 #install.packages("janitor")
@@ -78,7 +87,7 @@ logged_virus_data <- clean_virus_data %>%
 
 **5.3** - *Find the exponent (*$\alpha$*) and scaling factor (*$\beta$*) of the allometric law for dsDNA viruses and write the p-values from the model you obtained, are they statistically significant? Compare the values you found to those shown in **Table 2** of the paper, did you find the same values? (10 points)*
 
-To find the exponent and scaling factor a linear regression can be run on the log-transformed data, producing a linear model. The output of this model shows ln($\beta$) as the intercept estimate and $\alpha$ as slope estimate, ln($\beta$) must be transformed to $\beta$. There values and corresponding p-values are as follows: exponent($\alpha$) = 1.5152 (p = 6.44e-10) scaling factor ($\beta$) = 1181.807 (p = 2.28e-10) As both these p-values are below p = 0.05 (and p = 0.001), the values obtained from the model are statistically significant. In the paper they found exponent = 1.53 and scaling factor = 1182 for dsDNA viruses. These are the same values rounded to the nearest integer that was found in this analysis.
+To find the exponent and scaling factor a linear regression can be run on the log-transformed data, producing a linear model. The output of this model shows ln($\beta$) as the intercept estimate and $\alpha$ as the slope estimate, ln($\beta$) must be transformed to $\beta$. Their values and corresponding p-values are as follows: exponent($\alpha$) = 1.5152 (p = 6.44e-10) scaling factor ($\beta$) = 1181.807 (p = 2.28e-10) As both these p-values are below p = 0.05 (and p = 0.001), the values obtained from the model are statistically significant. In the paper, they found exponent = 1.53 and scaling factor = 1182 for dsDNA viruses. These are the same values rounded to the nearest integer that was found in this analysis.
 
 ```{r}
 #produce linear model from the logged data 
@@ -101,10 +110,12 @@ ggplot(logged_virus_data, aes(x = log_genome_length_kb, y = log_virion_volume_nm
   labs(x = expression(bold("log [Virion volume (nm3)")), y = expression(bold("log [Genome length (kb)]")))
 
 ```
+<img width="797" alt="Screenshot 2023-12-07 at 14 39 13" src="https://github.com/anonnstudent/reproducible-research_homework/assets/150166627/86b49860-d96b-4971-a81f-7609a95c1678">
+
 
 **5.5** - *What is the estimated volume of a 300 kb dsDNA virus? (4 points)*
 
-The estiamted virion volume for a 300 kb dsDNA virus = 6697006 nm\^3
+The estimated virion volume for a 300 kb dsDNA virus = 6697006 nm\^3
 
 ```{r}
 #function to calculate volume
