@@ -50,9 +50,9 @@ View(dsdna_virus_data)
 
 **5.2** - *What transformation can you use to fit a linear model to the data? Apply the transformation. (3 points)*
 
-As the equation V = $\beta$L\^($\alpha$) is allometric (nonlinear) this data can be log-transformed to make it linear. To ensure this transformation would be appropriate for the data I also visualised the data for both virion volume and genome length.
+As the equation V = $\beta$ L\^($\alpha$) is allometric (nonlinear) this data can be log-transformed to make it linear. To ensure this transformation would be appropriate for the data I also visualised the data for both virion volume and genome length.
 
-The log transformation can be seen in the code, where columns showing logged values are added to the data. Now a linear model can be fitted to the data: ln(V) = ln($\beta$) + a\*ln(L).
+The log transformation can be seen in the code, where columns showing logged values are added to the data. Now a linear model can be fitted to the data: ln(V) = ln($\beta$) + $\alpha$\*ln(L).
 
 ```{r}
 #install.packages("janitor")
@@ -128,6 +128,19 @@ calculate_vol<- function(B, L, a) {
 vol <-  calculate_vol(1181.807, 300, 1.5152)
 vol
 ```
+
+### Bonus Question
+
+**(10 points)** - *Explain the difference between reproducibility and replicability in scientific research. How can git and GitHub be used to enhance the reproducibility and replicability of your work? what limitations do they have?*
+
+Reproducibility is the ability of another scientific researcher to obtain the same results using the methods or procedures used within the original study. If a study is reproducible, ensures that the results of the original study were valid and not artificial or an error.
+Replicability is the ability for similar results to be obtained within a new study using different methods. If similar results are replicated by multiple studies, then this indicates they are reliable. 
+Git and GitHub can enhance both within someone’s work for multiple reasons. Most importantly, they allow you to track all the changes made to your work (by yourself or others) and build a history of the project so it can be more easily reproduced in the future (with access to this information). A detailed description of the project can also be available in README files which help people understand it in more detail, again aiding its reproducibility. GitHub allows individuals to fork other people’s repositories to create their own copy that they can modify as they would like without affecting the original. This can benefit both reproducibility (as the project itself can be run) but also replicability, as different methods could be applied to see if similar results are obtained. 
+One limitation of git and GitHub is that it requires a good understanding to be used in collaborative projects. If some people within a research group are not as efficient at using them or if work and plans are not communicated effectively then errors could lead to errors occurring, which may be difficult to correct. 
+Furthermore, they are limited to coding only. There are other ways of carrying out scientific investigation, other than coding, that are not or not easily accessible through git and GitHub. Practical aspects of studies cannot be shared on this platform but can be shared on others such as protocols.io. As a result of this, git and GitHub usefulness is limited to coding, modelling, data analysis and similar computational science.
+
+
+
 
 ## Instructions
 
