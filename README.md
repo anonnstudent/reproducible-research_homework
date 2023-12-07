@@ -2,7 +2,7 @@
 
 ### Question 1-3: Link to "logistic_growth" repo
 
-<https://github.com/annonpers/logistic_growth>
+[<https://github.com/annonpers/logistic_growth>](https://github.com/anonnstudent/logistic_growth)
 
 ### Question 4
 
